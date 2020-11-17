@@ -310,9 +310,13 @@ class _RandomWordsState extends State<RandomWords> {
           ).toList();
 
           return Scaffold(
-            key:_scaffoldkey,
+            //key:_scaffoldkey,
             appBar: AppBar(
+              //automaticallyImplyLeading: true,
               title: Text('Saved Suggestions'),
+             // leading: IconButton(icon: Icon(Icons.arrow_back),
+              //    onPressed: () {Navigator.pop(context);},),
+
             ),
             body: ListView(children: divided),
           );

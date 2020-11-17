@@ -39,6 +39,7 @@ class _LogInState extends State<LogIn> {
           padding: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
           child: Column(
             children: <Widget>[
+              Text('Welcome to Startup Names Generator, pleaselog in below'),
               TextFormField(
                 decoration: InputDecoration(
                     hintText: 'Email'
@@ -53,11 +54,14 @@ class _LogInState extends State<LogIn> {
                 obscureText: true,
               ),
               Container(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                //width: 350,
                 child: loading
                     ? CircularProgressIndicator()
-                    : RaisedButton(
+                    : MaterialButton(
                         child: Text('Login'),
                         color: Colors.red,
+                        minWidth: 350,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(18.0),
                         ),
@@ -89,17 +93,21 @@ class _LogInState extends State<LogIn> {
                         },
                       ),
                 ),
-              RaisedButton(
-                  child: Text('New user? Click to sign up'),
-                  color: Colors.blueGrey,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(18.0),
-                  ),
-                  onPressed: (){
-                    _settingModalBottomSheet(context,
-                                        _email.text,
-                                        _password.text, widget.user);
-                  }
+              Container(
+                width: 350,
+                child: MaterialButton(
+                    child: Text('New user? Click to sign up'),
+                    color: Colors.blueGrey,
+                    minWidth: 350,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18.0),
+                    ),
+                    onPressed: (){
+                      _settingModalBottomSheet(context,
+                                          _email.text,
+                                          _password.text, widget.user);
+                    }
+                ),
               )
 
 
@@ -137,7 +145,7 @@ void _settingModalBottomSheet(context, String email, String password, UserReposi
                     controller: _password_confirm,
                     obscureText: true,
                     validator: (val) =>
-                        val != password ? 'password do not match' : null,
+                        val != password ? 'passwords must match' : null,
                   ),
                 ),
               ),
